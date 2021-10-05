@@ -1,6 +1,8 @@
 module Api
   module V1
     class OrderInformationsController < ApplicationController
+      before_action :set_orderinformation, only: [:show, :update, :destroy]
+
       def index
         @order_informations = OrderInformation.all.order(created_at: :desc)
         render json: { status: 'SUCCESS', message: 'Loaded orderinformations', data: @order_informations }
